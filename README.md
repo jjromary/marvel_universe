@@ -1,6 +1,6 @@
 </p>
 <h1 align="center">
-   Pedido PAgo - Desafio
+   Pedido Pago - Desafio
 </h1>
 
 <h4 align="center"> 
