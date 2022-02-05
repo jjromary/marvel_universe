@@ -14,13 +14,12 @@ interface HomeProps {
     thumbnail: {
       path: string;
       extension: string;
-    }
-  }[]
+    };
+  }[];
 }
 
-export default function Home ({characters}: HomeProps) {
-
-  console.log(characters[1])
+export default function Home({ characters }: HomeProps) {
+  console.log(characters[1]);
 
   return (
     <div>
@@ -28,43 +27,46 @@ export default function Home ({characters}: HomeProps) {
         <title>Marvel Universe</title>
       </Head>
 
-      <main> 
+      <main>
         <Container>
           <div className="content">
-
-            {characters.map(characters => {
-              return(
+            {characters.map((characters) => {
+              return (
                 <div key={characters.id} className="cards">
-                  <Image 
-                    src={characters.thumbnail.path + "." + characters.thumbnail.extension } 
+                  <Image
+                    src={
+                      characters.thumbnail.path +
+                      "." +
+                      characters.thumbnail.extension
+                    }
                     alt="imagem character"
-                    width={216} 
+                    width={216}
                     height={324}
                   />
                   <div className="infoCharacters">
                     <strong className="name">{characters.name}</strong>
-                    <span className="description">{characters.description? characters.description: "Information not available about the character"}</span>
-
+                    <span className="description">
+                      {characters.description
+                        ? characters.description
+                        : "Information not available about the character"}
+                    </span>
                   </div>
-
-                  <Link href={`/characters/${characters.id}`}>More Info</Link>
+                    <Link href={`/characters/${characters.id}`}>More Info</Link>
                 </div>
-              )
+              );
             })}
-
           </div>
-          </Container>       
-
+        </Container>
       </main>
     </div>
   );
-};
+}
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get('/characters')  
+  const { data } = await api.get("/characters");
 
   return {
-    props:{
+    props: {
       characters: data.data.results,
     },
     revalidate: 60 * 60 * 24, //24 horas

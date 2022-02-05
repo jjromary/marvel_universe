@@ -15,6 +15,8 @@ export const Container = styled.div`
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 0.5rem;
             background: #F8F8FF;
+
+        
         }
 
     }
