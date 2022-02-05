@@ -4,6 +4,7 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import { Container } from "./styles";
+import Link from "next/link";
 
 interface HomeProps {
   characters: {
@@ -18,6 +19,8 @@ interface HomeProps {
 }
 
 export default function Home ({characters}: HomeProps) {
+
+  console.log(characters[1])
 
   return (
     <div>
@@ -43,6 +46,8 @@ export default function Home ({characters}: HomeProps) {
                     <span className="description">{characters.description? characters.description: "Information not available about the character"}</span>
 
                   </div>
+
+                  <Link href={`/characters/${characters.id}`}>More Info</Link>
                 </div>
               )
             })}
